@@ -27,7 +27,8 @@ export const IsometricCityCanvas: React.FC = () => {
   const [selectedBuilding, setSelectedBuilding] = useState<CityBuilding | null>(null);
   const [hoveredBuilding, setHoveredBuilding] = useState<CityBuilding | null>(null);
   const [isComfortHomeOpen, setIsComfortHomeOpen] = useState<boolean>(false);
-  const [timeOfDay, setTimeOfDay] = useState<"day" | "dusk" | "night">("day");
+  // NIGHT-TIME BY DEFAULT AS PRIMARY ATMOSPHERE!
+  const [timeOfDay, setTimeOfDay] = useState<"day" | "dusk" | "night">("night");
   const [zoomLevel, setZoomLevel] = useState<number>(1);
   const [panOffset, setPanOffset] = useState<{ x: number; y: number }>({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState<boolean>(false);
@@ -81,20 +82,20 @@ export const IsometricCityCanvas: React.FC = () => {
 
   // Sky and lawn background colors depending on time of day
   const skyBackground =
-    timeOfDay === "day"
-      ? "bg-gradient-to-b from-[#BAE6FD] via-[#E0F2FE] to-[#F0FDF4]"
+    timeOfDay === "night"
+      ? "bg-gradient-to-b from-[#060A17] via-[#0B132B] to-[#0F172A]"
       : timeOfDay === "dusk"
-      ? "bg-gradient-to-b from-[#FBCFE8] via-[#FDE68A] to-[#FED7AA]"
-      : "bg-gradient-to-b from-[#0B1120] via-[#1E1B4B] to-[#0F172A]";
+      ? "bg-gradient-to-b from-[#4A154B] via-[#7C2D12] to-[#1E293B]"
+      : "bg-gradient-to-b from-[#BAE6FD] via-[#E0F2FE] to-[#F1F5F9]";
 
   const grassColor =
-    timeOfDay === "day" ? "#86EFAC" : timeOfDay === "dusk" ? "#A7F3D0" : "#14532D";
+    timeOfDay === "night" ? "#0F281E" : timeOfDay === "dusk" ? "#1E3A2F" : "#86EFAC";
 
   const roadColor =
-    timeOfDay === "day" ? "#475569" : timeOfDay === "dusk" ? "#334155" : "#1E293B";
+    timeOfDay === "night" ? "#1E293B" : timeOfDay === "dusk" ? "#334155" : "#475569";
 
   const sidewalkColor =
-    timeOfDay === "day" ? "#CBD5E1" : timeOfDay === "dusk" ? "#94A3B8" : "#334155";
+    timeOfDay === "night" ? "#334155" : timeOfDay === "dusk" ? "#64748B" : "#CBD5E1";
 
   return (
     <div className="relative w-full rounded-3xl overflow-hidden border border-slate-700/80 shadow-2xl flex flex-col bg-[#0F172A]">
@@ -110,11 +111,11 @@ export const IsometricCityCanvas: React.FC = () => {
                 Harsheen&apos;s Little World
               </h2>
               <span className="hidden sm:inline-flex px-2 py-0.5 rounded-full text-[10px] font-serif bg-rose-500/20 text-rose-300 border border-rose-500/30">
-                Living Isometric Neighbourhood
+                A town full of little stories
               </span>
             </div>
             <p className="text-xs text-slate-300 font-sans">
-              Explore 5 connected districts and step inside <strong>My Comfort Home</strong>
+              Click any building to explore projects, or step inside <strong>My Comfort Home</strong>
             </p>
           </div>
         </div>
@@ -130,34 +131,34 @@ export const IsometricCityCanvas: React.FC = () => {
           {/* Time of Day Switcher */}
           <div className="flex items-center bg-slate-800 rounded-xl border border-slate-700 p-0.5">
             <button
-              onClick={() => setTimeOfDay("day")}
+              onClick={() => setTimeOfDay("night")}
               className={`p-1.5 rounded-lg transition ${
-                timeOfDay === "day" ? "bg-amber-400 text-slate-950 font-bold" : "text-slate-400 hover:text-white"
+                timeOfDay === "night" ? "bg-indigo-600 text-white font-bold" : "text-slate-400 hover:text-white"
               }`}
-              title="Daytime Sunlit Warmth"
-              aria-label="Daytime mode"
+              title="Cozy Night-Time Glow (Recommended)"
+              aria-label="Night mode"
             >
-              <Sun className="w-4 h-4" />
+              <Moon className="w-4 h-4" />
             </button>
             <button
               onClick={() => setTimeOfDay("dusk")}
               className={`p-1.5 rounded-lg transition ${
                 timeOfDay === "dusk" ? "bg-rose-400 text-slate-950 font-bold" : "text-slate-400 hover:text-white"
               }`}
-              title="Golden Hour Dusk"
-              aria-label="Golden hour mode"
+              title="Golden Hour Twilight"
+              aria-label="Dusk mode"
             >
               <Sunset className="w-4 h-4" />
             </button>
             <button
-              onClick={() => setTimeOfDay("night")}
+              onClick={() => setTimeOfDay("day")}
               className={`p-1.5 rounded-lg transition ${
-                timeOfDay === "night" ? "bg-indigo-600 text-white font-bold" : "text-slate-400 hover:text-white"
+                timeOfDay === "day" ? "bg-amber-400 text-slate-950 font-bold" : "text-slate-400 hover:text-white"
               }`}
-              title="Midnight Glow Atmosphere"
-              aria-label="Night mode"
+              title="Daytime Sunlit Warmth"
+              aria-label="Day mode"
             >
-              <Moon className="w-4 h-4" />
+              <Sun className="w-4 h-4" />
             </button>
           </div>
 
@@ -177,7 +178,7 @@ export const IsometricCityCanvas: React.FC = () => {
                 setPanOffset({ x: 0, y: 0 });
               }}
               className="p-1.5 text-slate-400 hover:text-white transition"
-              title="Reset View"
+              title="Fit to City View"
               aria-label="Reset View"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -194,7 +195,7 @@ export const IsometricCityCanvas: React.FC = () => {
         </div>
       </div>
 
-      {/* 5 Distinct District Selector Pills */}
+      {/* Distinct District Selector Pills */}
       <div className="px-4 py-2 bg-slate-900 border-b border-slate-800 flex items-center gap-1.5 overflow-x-auto text-xs scrollbar-none z-10">
         <span className="text-slate-400 font-serif px-2 shrink-0">Districts:</span>
         <button
@@ -205,7 +206,7 @@ export const IsometricCityCanvas: React.FC = () => {
               : "bg-slate-800 text-slate-300 hover:text-white hover:bg-slate-700"
           }`}
         >
-          Whole Town (12 Landmarks)
+          All 12 Landmarks
         </button>
 
         {cityDistricts.map((d) => (
@@ -245,10 +246,10 @@ export const IsometricCityCanvas: React.FC = () => {
       </div>
 
       {/* ============================================================== */}
-      {/* IMMERSIVE 2.5D ISOMETRIC NEIGHBOURHOOD CANVAS */}
+      {/* IMMERSIVE 2.5D ISOMETRIC NEIGHBOURHOOD CANVAS                  */}
       {/* ============================================================== */}
       <div
-        className={`relative w-full h-[620px] sm:h-[720px] lg:h-[820px] overflow-hidden flex items-center justify-center transition-colors duration-700 cursor-grab active:cursor-grabbing ${skyBackground} ${
+        className={`relative w-full h-[640px] sm:h-[740px] lg:h-[840px] overflow-hidden flex items-center justify-center transition-colors duration-700 cursor-grab active:cursor-grabbing ${skyBackground} ${
           activeMobileTab === "districts" ? "hidden md:flex" : "flex"
         }`}
         onMouseDown={handleMouseDown}
@@ -256,25 +257,33 @@ export const IsometricCityCanvas: React.FC = () => {
         onMouseUp={handleMouseUp}
         onMouseLeave={handleMouseUp}
       >
-        {/* Animated Clouds in Sky */}
-        <div className="absolute inset-0 pointer-events-none overflow-hidden">
-          {/* Cloud 1 */}
-          <div className="absolute top-10 left-[10%] opacity-40 animate-float-slow">
-            <svg width="120" height="40" viewBox="0 0 120 40">
-              <ellipse cx="40" cy="25" rx="30" ry="15" fill="#FFFFFF" />
-              <ellipse cx="65" cy="18" rx="25" ry="16" fill="#FFFFFF" />
-              <ellipse cx="90" cy="24" rx="25" ry="14" fill="#FFFFFF" />
-            </svg>
+        {/* Night-time Atmospheric Stars & Subtle Shimmer */}
+        {timeOfDay === "night" && (
+          <div className="absolute inset-0 pointer-events-none overflow-hidden select-none">
+            {/* Soft Glowing Moon */}
+            <div className="absolute top-8 right-16 opacity-85">
+              <div className="w-14 h-14 rounded-full bg-amber-100 shadow-[0_0_40px_rgba(254,240,138,0.45)] relative overflow-hidden">
+                <div className="absolute -top-1 -right-1 w-12 h-12 rounded-full bg-[#060A17] opacity-20" />
+              </div>
+            </div>
+            {/* Twinkling Stars */}
+            {[
+              { x: "12%", y: "15%", delay: "0s", size: "w-1 h-1" },
+              { x: "24%", y: "8%", delay: "1.2s", size: "w-1.5 h-1.5" },
+              { x: "38%", y: "18%", delay: "0.6s", size: "w-1 h-1" },
+              { x: "55%", y: "10%", delay: "2.1s", size: "w-2 h-2" },
+              { x: "72%", y: "14%", delay: "1.8s", size: "w-1 h-1" },
+              { x: "85%", y: "6%", delay: "0.4s", size: "w-1.5 h-1.5" },
+              { x: "92%", y: "22%", delay: "2.5s", size: "w-1 h-1" },
+            ].map((star, idx) => (
+              <div
+                key={idx}
+                className={`absolute rounded-full bg-white animate-pulse ${star.size}`}
+                style={{ top: star.y, left: star.x, animationDelay: star.delay }}
+              />
+            ))}
           </div>
-          {/* Cloud 2 */}
-          <div className="absolute top-16 right-[15%] opacity-35 animate-float-slow" style={{ animationDelay: "2s" }}>
-            <svg width="140" height="45" viewBox="0 0 140 45">
-              <ellipse cx="45" cy="28" rx="32" ry="16" fill="#FFFFFF" />
-              <ellipse cx="75" cy="20" rx="30" ry="18" fill="#FFFFFF" />
-              <ellipse cx="105" cy="26" rx="28" ry="15" fill="#FFFFFF" />
-            </svg>
-          </div>
-        </div>
+        )}
 
         {/* Scalable & Pannable SVG Viewport */}
         <div
@@ -284,151 +293,210 @@ export const IsometricCityCanvas: React.FC = () => {
           }}
         >
           <svg
-            viewBox="0 0 1180 840"
-            className="w-full h-full max-w-[1300px] overflow-visible select-none"
+            viewBox="0 0 1200 860"
+            className="w-full h-full max-w-[1360px] overflow-visible select-none"
             aria-label="Interactive 2.5D Isometric Neighbourhood Map of Harsheen's Little World"
           >
-            {/* 1. GREEN LAWNS & RESIDENTIAL LOTS */}
+            <defs>
+              {/* Radial Streetlight Halo */}
+              <radialGradient id="streetlightGlow" cx="50%" cy="50%" r="50%">
+                <stop offset="0%" stopColor="#FEF08A" stopOpacity="0.75" />
+                <stop offset="40%" stopColor="#FDE047" stopOpacity="0.4" />
+                <stop offset="100%" stopColor="#FDE047" stopOpacity="0" />
+              </radialGradient>
+
+              {/* Fountain Water Pool Gradient */}
+              <linearGradient id="fountainWater" x1="0%" y1="0%" x2="100%" y2="100%">
+                <stop offset="0%" stopColor="#38BDF8" />
+                <stop offset="50%" stopColor="#0284C7" />
+                <stop offset="100%" stopColor="#0369A1" />
+              </linearGradient>
+
+              {/* Stone Terrace Texture */}
+              <linearGradient id="stoneWallGrad" x1="0%" y1="0%" x2="0%" y2="100%">
+                <stop offset="0%" stopColor="#64748B" />
+                <stop offset="100%" stopColor="#334155" />
+              </linearGradient>
+            </defs>
+
+            {/* ============================================================== */}
+            {/* 1. LAYERED TOWN ISLAND FOUNDATION & STONE RETAINING TERRACES    */}
+            {/* ============================================================== */}
             <g className="island-foundation">
-              {/* Grand Neighbourhood Island Foundation Plate */}
+              {/* Grand Neighbourhood Island Ground Plate */}
               <polygon
-                points="590,50 1140,360 590,790 40,360"
+                points="600,45 1160,360 600,810 40,360"
                 fill={grassColor}
-                stroke="rgba(0,0,0,0.15)"
-                strokeWidth="3"
+                stroke="rgba(0,0,0,0.3)"
+                strokeWidth="2.5"
                 className="transition-colors duration-500"
               />
               {/* Island soil base thickness side */}
               <polygon
-                points="40,360 590,790 590,815 40,385"
-                fill="#78350F"
-                opacity="0.85"
-              />
-              <polygon
-                points="1140,360 590,790 590,815 1140,385"
+                points="40,360 600,810 600,835 40,385"
                 fill="#451A03"
                 opacity="0.9"
               />
+              <polygon
+                points="1160,360 600,810 600,835 1160,385"
+                fill="#291305"
+                opacity="0.95"
+              />
             </g>
 
-            {/* 2. REALISTIC CONNECTED STREETS, SIDEWALKS & CROSSWALKS */}
+            {/* ============================================================== */}
+            {/* 2. REALISTIC INTERCONNECTED ASPHALT STREETS, SIDEWALKS & CURBS */}
+            {/* ============================================================== */}
             <g className="streets-network">
-              {/* Main Diagonal Avenue A (North-West to South-East) */}
-              <polygon points="260,190 890,560 850,585 220,215" fill={sidewalkColor} />
-              <polygon points="270,195 880,555 860,570 250,210" fill={roadColor} />
+              {/* Diagonal Avenue A (North-West to South-East) */}
+              <polygon points="260,180 920,560 880,585 220,205" fill={sidewalkColor} />
+              <polygon points="270,185 910,555 890,570 250,200" fill={roadColor} />
               <line
                 x1="260"
-                y1="202"
-                x2="870"
+                y1="192"
+                x2="900"
                 y2="562"
                 stroke="#FFFFFF"
                 strokeWidth="2"
-                strokeDasharray="8,8"
-                opacity="0.8"
+                strokeDasharray="9,9"
+                opacity="0.75"
               />
 
-              {/* Main Diagonal Avenue B (North-East to South-West) */}
-              <polygon points="890,190 260,560 220,535 850,165" fill={sidewalkColor} />
-              <polygon points="880,195 270,555 250,540 860,180" fill={roadColor} />
+              {/* Diagonal Avenue B (North-East to South-West) */}
+              <polygon points="920,180 260,560 220,535 880,155" fill={sidewalkColor} />
+              <polygon points="910,185 270,555 250,540 890,170" fill={roadColor} />
               <line
-                x1="870"
-                y1="188"
+                x1="900"
+                y1="178"
                 x2="260"
                 y2="548"
                 stroke="#FFFFFF"
                 strokeWidth="2"
-                strokeDasharray="8,8"
-                opacity="0.8"
+                strokeDasharray="9,9"
+                opacity="0.75"
               />
 
-              {/* Central Roundabout & Park Fountain */}
-              <ellipse cx="590" cy="380" rx="55" ry="30" fill={sidewalkColor} stroke="#94A3B8" strokeWidth="2" />
-              <ellipse cx="590" cy="380" rx="42" ry="22" fill="#38BDF8" stroke="#0284C7" strokeWidth="3" />
-              {/* Fountain Water Jet */}
-              <ellipse cx="590" cy="378" rx="16" ry="8" fill="#BAE6FD" />
-              <circle cx="590" cy="374" r="5" fill="#FFFFFF" className="animate-pulse" />
+              {/* Outer Connecting Street (South-West to South-East) */}
+              <polygon points="340,580 840,680 820,700 320,600" fill={sidewalkColor} />
+              <polygon points="350,585 830,675 825,690 340,595" fill={roadColor} />
+
+              {/* Central Park Roundabout & Cobblestone Plaza */}
+              <ellipse cx="600" cy="390" rx="60" ry="32" fill={sidewalkColor} stroke="#64748B" strokeWidth="2" />
+              <ellipse cx="600" cy="390" rx="46" ry="24" fill="url(#fountainWater)" stroke="#0284C7" strokeWidth="3" />
+              {/* Fountain Jet with Animated Ripples */}
+              <ellipse cx="600" cy="388" rx="20" ry="10" fill="#BAE6FD" opacity="0.8" className="animate-pulse" />
+              <circle cx="600" cy="384" r="5" fill="#FFFFFF" className="animate-ping" />
+              <circle cx="600" cy="384" r="3.5" fill="#FEF08A" />
 
               {/* Pedestrian Zebra Crossings */}
-              <g className="crosswalks" stroke="#FFFFFF" strokeWidth="3">
-                <line x1="510" y1="335" x2="525" y2="345" />
-                <line x1="518" y1="330" x2="533" y2="340" />
-                <line x1="526" y1="325" x2="541" y2="335" />
+              <g className="crosswalks" stroke="#FFFFFF" strokeWidth="3" opacity="0.85">
+                <line x1="520" y1="345" x2="535" y2="355" />
+                <line x1="528" y1="340" x2="543" y2="350" />
+                <line x1="536" y1="335" x2="551" y2="345" />
 
-                <line x1="655" y1="330" x2="670" y2="340" />
-                <line x1="663" y1="335" x2="678" y2="345" />
-                <line x1="671" y1="340" x2="686" y2="350" />
+                <line x1="665" y1="340" x2="680" y2="350" />
+                <line x1="673" y1="345" x2="688" y2="355" />
+                <line x1="681" y1="350" x2="696" y2="360" />
               </g>
 
-              {/* Animated Cute Mini Cars */}
+              {/* Warm Golden Streetlight Halos on Ground */}
+              {[
+                { cx: 480, cy: 320 },
+                { cx: 720, cy: 320 },
+                { cx: 480, cy: 460 },
+                { cx: 720, cy: 460 },
+                { cx: 330, cy: 220 },
+                { cx: 870, cy: 220 },
+                { cx: 330, cy: 520 },
+                { cx: 870, cy: 520 },
+              ].map((pos, i) => (
+                <ellipse
+                  key={i}
+                  cx={pos.cx}
+                  cy={pos.cy}
+                  rx="38"
+                  ry="20"
+                  fill="url(#streetlightGlow)"
+                  className="pointer-events-none"
+                />
+              ))}
+
+              {/* Animated Cute Mini Delivery Vehicles */}
               <g className="animate-car-1">
-                <ellipse cx="320" cy="225" rx="10" ry="5" fill="#DC2626" />
-                <ellipse cx="320" cy="223" rx="7" ry="3.5" fill="#BAE6FD" />
-                <circle cx="314" cy="227" r="2" fill="#1C1917" />
-                <circle cx="326" cy="227" r="2" fill="#1C1917" />
-                <circle cx="328" cy="224" r="1.5" fill="#FEF08A" />
+                {/* Red delivery van */}
+                <ellipse cx="330" cy="215" rx="11" ry="5.5" fill="#DC2626" />
+                <ellipse cx="330" cy="213" rx="7" ry="3.5" fill="#BAE6FD" />
+                <circle cx="323" cy="217" r="2.2" fill="#1C1917" />
+                <circle cx="337" cy="217" r="2.2" fill="#1C1917" />
+                {/* Headlights beam */}
+                <circle cx="339" cy="214" r="2" fill="#FEF08A" style={{ filter: "drop-shadow(0 0 4px #FEF08A)" }} />
               </g>
               <g className="animate-car-2">
-                <ellipse cx="820" cy="225" rx="10" ry="5" fill="#0D9488" />
-                <ellipse cx="820" cy="223" rx="7" ry="3.5" fill="#BAE6FD" />
-                <circle cx="814" cy="227" r="2" fill="#1C1917" />
-                <circle cx="826" cy="227" r="2" fill="#1C1917" />
-                <circle cx="812" cy="224" r="1.5" fill="#FEF08A" />
+                {/* Teal mini scooter */}
+                <ellipse cx="830" cy="215" rx="10" ry="5" fill="#0D9488" />
+                <ellipse cx="830" cy="213" rx="6.5" ry="3" fill="#BAE6FD" />
+                <circle cx="824" cy="217" r="2" fill="#1C1917" />
+                <circle cx="836" cy="217" r="2" fill="#1C1917" />
+                <circle cx="822" cy="214" r="1.8" fill="#FEF08A" style={{ filter: "drop-shadow(0 0 4px #FEF08A)" }} />
               </g>
             </g>
 
-            {/* 3. LUSH TREES, GARDENS, BENCHES & STREETLAMPS */}
+            {/* ============================================================== */}
+            {/* 3. LUSH STORYBOOK TREES, GARDENS, BENCHES & STREETLAMPS        */}
+            {/* ============================================================== */}
             <g className="environment-decorations">
-              <g transform="translate(310, 310)">
-                <ellipse cx="0" cy="0" rx="16" ry="18" fill="#15803D" />
-                <ellipse cx="-4" cy="-4" rx="14" ry="15" fill="#22C55E" />
-                <ellipse cx="4" cy="-2" rx="12" ry="13" fill="#4ADE80" />
-                <rect x="-3" y="12" width="6" height="12" fill="#78350F" />
-              </g>
-              <g transform="translate(480, 270)">
-                <ellipse cx="0" cy="0" rx="15" ry="17" fill="#166534" />
-                <ellipse cx="-3" cy="-3" rx="13" ry="14" fill="#15803D" />
-                <rect x="-2.5" y="10" width="5" height="10" fill="#78350F" />
-              </g>
-              <g transform="translate(680, 220)">
-                <ellipse cx="0" cy="0" rx="18" ry="20" fill="#15803D" />
-                <ellipse cx="3" cy="-4" rx="15" ry="16" fill="#22C55E" />
-                <rect x="-3" y="14" width="6" height="12" fill="#78350F" />
-              </g>
-              <g transform="translate(420, 500)">
-                <ellipse cx="0" cy="0" rx="16" ry="18" fill="#047857" />
-                <ellipse cx="-4" cy="-3" rx="13" ry="14" fill="#10B981" />
-                <rect x="-3" y="12" width="6" height="12" fill="#78350F" />
-              </g>
-              <g transform="translate(760, 480)">
-                <ellipse cx="0" cy="0" rx="17" ry="19" fill="#166534" />
-                <ellipse cx="4" cy="-3" rx="14" ry="15" fill="#22C55E" />
-                <rect x="-3" y="13" width="6" height="12" fill="#78350F" />
-              </g>
-
-              {/* Park Benches near Roundabout */}
-              <g transform="translate(540, 420)">
-                <polygon points="0,0 20,-8 20,4 0,12" fill="#78350F" stroke="#451A03" />
-                <line x1="4" y1="8" x2="4" y2="16" stroke="#451A03" strokeWidth="2" />
-                <line x1="16" y1="2" x2="16" y2="10" stroke="#451A03" strokeWidth="2" />
-              </g>
-
-              {/* Classic Vintage Streetlamps */}
+              {/* Vintage Cast-Iron Streetlamps */}
               {[
-                { x: 380, y: 250 },
-                { x: 520, y: 310 },
-                { x: 670, y: 440 },
-                { x: 740, y: 310 },
-              ].map((pos, idx) => (
-                <g key={idx} transform={`translate(${pos.x}, ${pos.y})`}>
-                  <line x1="0" y1="0" x2="0" y2="-28" stroke="#1E293B" strokeWidth="2.5" />
-                  <path d="M-6,-28 Q0,-34 6,-28 Z" fill="#1E293B" />
-                  <circle cx="0" cy="-25" r="3" fill="#FEF08A" filter="drop-shadow(0 0 6px #FBBF24)" />
+                { x: 480, y: 310 },
+                { x: 720, y: 310 },
+                { x: 480, y: 450 },
+                { x: 720, y: 450 },
+                { x: 330, y: 210 },
+                { x: 870, y: 210 },
+                { x: 330, y: 510 },
+                { x: 870, y: 510 },
+              ].map((lamp, i) => (
+                <g key={i}>
+                  <line x1={lamp.x} y1={lamp.y} x2={lamp.x} y2={lamp.y - 18} stroke="#1C1917" strokeWidth="2" />
+                  <circle cx={lamp.x} cy={lamp.y - 19} r="3" fill="#FEF08A" style={{ filter: "drop-shadow(0 0 6px #FEF08A)" }} />
+                </g>
+              ))}
+
+              {/* Park Benches in Central Square */}
+              <g className="park-benches">
+                <rect x="550" y="360" width="16" height="5" fill="#78350F" rx="1" />
+                <rect x="634" y="360" width="16" height="5" fill="#78350F" rx="1" />
+                <rect x="592" y="420" width="16" height="5" fill="#78350F" rx="1" />
+              </g>
+
+              {/* Rich Storybook Trees (Multi-toned layered canopies) */}
+              {[
+                { x: 500, y: 370, r: 16, fill: "#15803D", highlight: "#22C55E" },
+                { x: 700, y: 370, r: 16, fill: "#15803D", highlight: "#22C55E" },
+                { x: 590, y: 330, r: 18, fill: "#166534", highlight: "#4ADE80" },
+                { x: 230, y: 280, r: 14, fill: "#D97706", highlight: "#FBBF24" }, // Golden Autumn Tree
+                { x: 420, y: 220, r: 15, fill: "#15803D", highlight: "#22C55E" },
+                { x: 780, y: 280, r: 14, fill: "#BE185D", highlight: "#F472B6" }, // Cherry Blossom Tree
+                { x: 230, y: 500, r: 15, fill: "#166534", highlight: "#4ADE80" },
+                { x: 730, y: 560, r: 16, fill: "#15803D", highlight: "#22C55E" },
+                { x: 890, y: 450, r: 14, fill: "#D97706", highlight: "#FBBF24" },
+                { x: 550, y: 640, r: 16, fill: "#166534", highlight: "#4ADE80" },
+              ].map((t, i) => (
+                <g key={i}>
+                  {/* Tree Trunk */}
+                  <rect x={t.x - 2.5} y={t.y} width="5" height="12" fill="#451A03" rx="1" />
+                  {/* Main Canopy */}
+                  <circle cx={t.x} cy={t.y - 6} r={t.r} fill={t.fill} />
+                  {/* Highlight Foliage Cluster */}
+                  <circle cx={t.x - 3} cy={t.y - 10} r={t.r * 0.65} fill={t.highlight} opacity="0.8" />
                 </g>
               ))}
             </g>
 
-            {/* 4. ALL 12 ISOMETRIC BUILDINGS (RENDERED BACK-TO-FRONT) */}
-            <g className="neighbourhood-buildings">
+            {/* ============================================================== */}
+            {/* 4. THE 12 DISTINCT ARCHITECTURAL DESTINATIONS                  */}
+            {/* ============================================================== */}
+            <g className="city-landmarks">
               {sortedBuildings.map((building) => (
                 <IsometricBuilding
                   key={building.id}
@@ -444,37 +512,23 @@ export const IsometricCityCanvas: React.FC = () => {
           </svg>
         </div>
 
-        {/* Floating Quick Action Overlay at Bottom of Canvas */}
-        <div className="absolute bottom-4 left-4 right-4 sm:left-6 sm:right-auto z-20 flex items-center gap-3 bg-slate-900/90 backdrop-blur-md p-3 rounded-2xl border border-slate-700 shadow-xl">
-          <div className="p-2 rounded-xl bg-rose-500/20 text-rose-400">
-            <Home className="w-4 h-4" />
-          </div>
-          <div className="text-xs text-slate-200">
-            <span className="font-semibold text-white">Neighbourhood Guide:</span> Click <strong>My Comfort Home</strong> to enter Harsheen&apos;s 6 creative rooms, or click any landmark to launch its project case study.
-          </div>
+        {/* Floating Quick Legend / Hint Pill */}
+        <div className="absolute bottom-4 left-4 z-20 pointer-events-none hidden sm:flex items-center gap-2 px-3 py-1.5 rounded-full bg-slate-900/90 text-slate-300 text-[11px] font-mono border border-slate-700/80 shadow-lg">
+          <Info className="w-3.5 h-3.5 text-rose-400" />
+          <span>Click any landmark to open details • Click cottage to enter 6 rooms</span>
         </div>
       </div>
 
       {/* ============================================================== */}
-      {/* MOBILE ACCESSIBLE DISTRICT DIRECTORY LIST */}
+      {/* MOBILE DISTRICT DIRECTORY LIST TAB                            */}
       {/* ============================================================== */}
-      <div
-        className={`p-4 sm:p-6 space-y-6 ${
-          activeMobileTab === "districts" ? "block" : "hidden md:block"
-        }`}
-      >
-        <div className="flex items-center justify-between">
-          <div>
-            <h3 className="font-serif text-lg font-bold text-white">
-              Town Directory & Landmarks
-            </h3>
-            <p className="text-xs text-slate-400">
-              Browse all 12 destinations organized across the 5 connected districts
-            </p>
-          </div>
+      <div className={`p-4 space-y-4 bg-slate-950 ${activeMobileTab === "districts" ? "block md:hidden" : "hidden"}`}>
+        <div className="space-y-1">
+          <h3 className="font-serif text-base font-bold text-white">Neighbourhood Directory</h3>
+          <p className="text-xs text-slate-400">Touch any destination to inspect case study or step inside.</p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
+        <div className="grid grid-cols-1 gap-3">
           {cityBuildings.map((b) => (
             <div
               key={b.id}

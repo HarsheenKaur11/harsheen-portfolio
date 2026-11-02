@@ -14,9 +14,9 @@ import { IsometricCityCanvas } from "@/components/city/IsometricCityCanvas";
 import { cityDistricts, cityBuildings } from "@/data/city";
 
 export const metadata = {
-  title: "Harsheen's Little World — Living 2.5D Isometric Neighbourhood",
+  title: "Harsheen's Little World — A Town Full of Little Stories",
   description:
-    "An original, colourful 2.5D isometric neighbourhood showcasing Harsheen Kaur's projects, career milestones at NielsenIQ, and the centerpiece My Comfort Home with 6 interactive sanctuary rooms.",
+    "A cozy, interactive, night-time isometric neighbourhood showcasing Harsheen Kaur's projects, NielsenIQ experience, and the centerpiece My Comfort Home with 6 interactive sanctuary rooms.",
 };
 
 export default function WorldPage() {
@@ -31,10 +31,10 @@ export default function WorldPage() {
               <span>EXPERIENCE 2: HARSHEEN&apos;S LITTLE WORLD</span>
             </div>
             <h1 className="text-3xl sm:text-4xl lg:text-5xl font-serif font-bold text-white tracking-tight">
-              A Living Interactive Neighbourhood
+              A Town Full of Little Stories
             </h1>
             <p className="text-sm sm:text-base text-slate-300 max-w-2xl font-sans">
-              Stroll through 5 colourful districts connected by paved streets and leafy crosswalks. Click any landmark to inspect case studies or step inside <strong>My Comfort Home</strong> to explore 6 cozy sanctuary rooms.
+              Explore a cozy, night-time isometric neighbourhood. Wander down illuminated avenues, inspect verified technology projects, or step inside <strong>My Comfort Home</strong> to visit 6 warm sanctuary rooms.
             </p>
           </div>
 
@@ -68,7 +68,7 @@ export default function WorldPage() {
               </h3>
             </div>
             <span className="text-xs font-mono text-slate-400">
-              5 Districts • 12 Destinations • 6 Comfort Rooms
+              6 Districts • 12 Destinations • 6 Comfort Rooms
             </span>
           </div>
 
@@ -86,10 +86,10 @@ export default function WorldPage() {
             <div className="p-4 rounded-2xl bg-midnight-900 border border-slate-800/80 space-y-2">
               <div className="flex items-center gap-2 text-purple-400 font-semibold text-sm">
                 <Compass className="w-4 h-4" />
-                <span>Living Districts</span>
+                <span>Interconnected Districts</span>
               </div>
               <p className="text-slate-400">
-                Travel from Creative Corner and Innovation Avenue to Financial District, Learning Lane, and Community Square, each with unique architectural identities and trees.
+                Wander through Residential & Sanctuary, Media & Intelligence, Civic & Care, Commerce & Culture, Innovation & Academy Heights, and the Financial & Corporate Centre.
               </p>
             </div>
 

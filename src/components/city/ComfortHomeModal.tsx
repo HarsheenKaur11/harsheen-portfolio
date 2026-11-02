@@ -79,10 +79,10 @@ export const ComfortHomeModal: React.FC<ComfortHomeModalProps> = ({
           </button>
         </div>
 
-        {/* ILLUSTRATED COTTAGE FACADE SVG */}
-        <div className="relative p-6 sm:p-10 bg-gradient-to-b from-[#FEF3C7]/40 via-[#FAF8F5] to-[#F5F2EB] flex flex-col items-center justify-center">
+        {/* ILLUSTRATED COTTAGE FACADE SVG (Under starry night sky) */}
+        <div className="relative p-6 sm:p-10 bg-gradient-to-b from-[#0B132B] via-[#1E1B4B] to-[#1C1917] flex flex-col items-center justify-center">
           {/* Signboard */}
-          <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#78350F] text-[#FEF3C7] border-2 border-[#B45309] shadow-md font-serif text-xs font-bold tracking-wider uppercase">
+          <div className="mb-4 inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#78350F] text-[#FEF3C7] border-2 border-[#B45309] shadow-lg font-serif text-xs font-bold tracking-wider uppercase">
             <span>🏡 My Comfort Home</span>
           </div>
 
