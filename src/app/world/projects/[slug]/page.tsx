@@ -98,12 +98,12 @@ export default function WorldProjectDetailPage({ params }: WorldProjectPageProps
               </p>
               <div className="grid grid-cols-2 gap-3 text-xs font-mono pt-2 border-t border-slate-900">
                 <div>
-                  <span className="text-slate-400 block">Floors:</span>
-                  <strong className="text-white">{building?.floors || 6} Levels</strong>
+                  <span className="text-slate-400 block">Architecture:</span>
+                  <strong className="text-white capitalize">{building?.architecturalStyle || "Modern Pavilion"}</strong>
                 </div>
                 <div>
-                  <span className="text-slate-400 block">Roof Accent:</span>
-                  <strong className="text-white capitalize">{building?.roofType || "Modern"}</strong>
+                  <span className="text-slate-400 block">Roof Design:</span>
+                  <strong className="text-white capitalize">{building?.roofStyle?.replace("-", " ") || "Sculpted"}</strong>
                 </div>
               </div>
             </div>

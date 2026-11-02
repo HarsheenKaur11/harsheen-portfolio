@@ -70,10 +70,10 @@ export const HeroSection: React.FC = () => {
 
               <Link
                 href="/world"
-                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-purple-600 to-electric hover:from-purple-700 hover:to-electric-dark text-white font-semibold text-xs tracking-wider uppercase shadow-lg transition duration-200"
+                className="inline-flex items-center gap-2 px-6 py-3.5 rounded-2xl bg-gradient-to-r from-rose-500 via-purple-600 to-electric hover:from-rose-600 hover:to-purple-700 text-white font-semibold text-xs tracking-wider uppercase shadow-lg transition duration-200"
               >
                 <Compass className="w-4 h-4" />
-                <span>Enter My City</span>
+                <span>Enter My Little World</span>
                 <Sparkles className="w-3.5 h-3.5 text-amber-300" />
               </Link>
 

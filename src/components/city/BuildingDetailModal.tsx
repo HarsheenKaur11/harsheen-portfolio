@@ -44,7 +44,7 @@ export const BuildingDetailModal: React.FC<BuildingDetailModalProps> = ({
         <div
           className="p-6 sm:p-7 relative border-b border-slate-800"
           style={{
-            background: `radial-gradient(circle at top right, ${building.glowColor}, transparent 70%), #0A0E17`,
+            background: `radial-gradient(circle at top right, ${building.palette.accent}25, transparent 70%), #0A0E17`,
           }}
         >
           <div className="flex items-start justify-between gap-4">
@@ -54,7 +54,7 @@ export const BuildingDetailModal: React.FC<BuildingDetailModalProps> = ({
                   className="px-2.5 py-0.5 rounded-full text-[11px] font-semibold uppercase tracking-wider"
                   style={{
                     backgroundColor: `${building.districtColor}25`,
-                    color: building.accentColor,
+                    color: building.palette.accent,
                     border: `1px solid ${building.districtColor}50`,
                   }}
                 >
@@ -117,10 +117,10 @@ export const BuildingDetailModal: React.FC<BuildingDetailModalProps> = ({
 
             <div className="p-3.5 rounded-2xl bg-slate-950/70 border border-slate-800">
               <span className="block text-[11px] text-slate-400 uppercase tracking-wider">
-                Floors & Architecture
+                Architecture Style
               </span>
-              <span className="text-base font-bold text-white mt-0.5 block capitalize">
-                {building.floors} Floors • {building.roofType.replace("-", " ")}
+              <span className="text-sm font-bold text-white mt-0.5 block capitalize truncate" title={building.architecturalStyle}>
+                {building.architecturalStyle}
               </span>
             </div>
           </div>

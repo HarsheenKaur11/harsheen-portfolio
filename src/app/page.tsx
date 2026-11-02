@@ -40,25 +40,25 @@ export default function HomePage() {
           <div className="absolute right-0 top-0 bottom-0 w-1/2 bg-tech-grid opacity-15 pointer-events-none" />
           <div className="relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             <div className="lg:col-span-8 space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-purple-500/15 border border-purple-500/30 text-purple-300 text-xs font-semibold tracking-wider uppercase">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-rose-500/15 border border-rose-500/30 text-rose-300 text-xs font-semibold tracking-wider uppercase">
                 <Compass className="w-3.5 h-3.5" />
                 <span>Signature Portfolio Feature</span>
               </div>
               <h2 className="text-2xl sm:text-3xl lg:text-4xl font-serif font-bold text-white tracking-tight">
-                Two Connected Worlds. One Unified Portfolio.
+                Two Connected Perspectives. One Unified Portfolio.
               </h2>
               <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-                Prefer an interactive digital experience? Explore <strong>Harsheen&apos;s World</strong>—an original 2.5D isometric city featuring 11 interactive destinations representing projects, enterprise data operations, and academic honors.
+                Prefer an explorable world? Step into <strong>Harsheen&apos;s Little World</strong>—a colourful, charming 2.5D isometric neighbourhood featuring 12 destinations across 5 districts, plus the centerpiece <strong>My Comfort Home</strong> with 6 interactive sanctuary rooms.
               </p>
             </div>
 
             <div className="lg:col-span-4 flex flex-col sm:flex-row lg:flex-col gap-3 justify-end">
               <Link
                 href="/world"
-                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-electric to-purple-600 hover:from-electric-dark hover:to-purple-700 text-white font-semibold text-xs tracking-wider uppercase shadow-electric-md transition"
+                className="inline-flex items-center justify-center gap-2 px-6 py-4 rounded-2xl bg-gradient-to-r from-rose-500 via-purple-600 to-electric hover:from-rose-600 hover:to-purple-700 text-white font-semibold text-xs tracking-wider uppercase shadow-electric-md transition"
               >
                 <Compass className="w-4 h-4" />
-                <span>Launch Interactive City</span>
+                <span>Explore Harsheen&apos;s Little World</span>
                 <Sparkles className="w-4 h-4 text-amber-300" />
               </Link>
 

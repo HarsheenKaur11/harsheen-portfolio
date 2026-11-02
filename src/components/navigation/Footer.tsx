@@ -18,22 +18,22 @@ export const Footer: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 border-b border-slate-900">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-6 bg-gradient-to-r from-slate-900/80 via-midnight-900 to-slate-900/80 p-6 sm:p-8 rounded-3xl border border-slate-800">
           <div className="space-y-1">
-            <span className="text-xs font-mono uppercase tracking-widest text-electric">
-              Explore The Alternative Dimension
+            <span className="text-xs font-mono uppercase tracking-widest text-rose-400">
+              Interactive 2.5D Neighbourhood
             </span>
             <h3 className="text-xl sm:text-2xl font-serif font-bold text-white">
-              Ready to explore the Interactive Isometric City?
+              Step into Harsheen&apos;s Little World
             </h3>
             <p className="text-sm text-slate-300 max-w-xl">
-              Step inside Harsheen&apos;s World—an interactive miniature digital district where every building represents a real project, career milestone, or achievement.
+              Explore 5 charming connected districts, discover 12 architectural landmarks, and step inside <strong>My Comfort Home</strong> to visit 6 cozy interactive rooms.
             </p>
           </div>
           <Link
             href="/world"
-            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-electric to-purple-600 hover:from-electric-dark hover:to-purple-700 text-white font-semibold text-xs tracking-wide shadow-electric-md transition shrink-0"
+            className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-gradient-to-r from-rose-500 via-purple-600 to-electric hover:from-rose-600 hover:to-electric-dark text-white font-semibold text-xs tracking-wide shadow-electric-md transition shrink-0"
           >
             <Compass className="w-4 h-4" />
-            <span>Enter Harsheen&apos;s World</span>
+            <span>Enter Harsheen&apos;s Little World</span>
             <ArrowUpRight className="w-4 h-4" />
           </Link>
         </div>
