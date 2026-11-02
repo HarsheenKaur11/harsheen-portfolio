@@ -1,5 +1,14 @@
 # Harsheen Kaur — Interactive Portfolio & Isometric City
 
+[![Live Production Website](https://img.shields.io/badge/Live%20Website-portfolio--eta--tawny--14.vercel.app-477DFF?style=for-the-badge&logo=vercel)](https://portfolio-eta-tawny-14.vercel.app)
+[![GitHub Repository](https://img.shields.io/badge/GitHub-HarsheenKaur11%2Fharsheen--portfolio-181717?style=for-the-badge&logo=github)](https://github.com/HarsheenKaur11/harsheen-portfolio)
+[![Next.js](https://img.shields.io/badge/Next.js-14.2%20App%20Router-black?style=for-the-badge&logo=next.js)](https://nextjs.org)
+
+**Live Production URL**: [https://portfolio-eta-tawny-14.vercel.app](https://portfolio-eta-tawny-14.vercel.app)  
+**GitHub Repository**: [https://github.com/HarsheenKaur11/harsheen-portfolio](https://github.com/HarsheenKaur11/harsheen-portfolio)
+
+---
+
 A modern, responsive personal portfolio and interactive digital world designed with the **Midnight Editorial City** aesthetic.
 
 - **Primary Persona**: Harsheen Kaur — BCA Graduate (9.48 CGPA), Data Operations Analyst at NielsenIQ (NIQ Thumbs Up Award), Machine Learning & Full-Stack Developer.
